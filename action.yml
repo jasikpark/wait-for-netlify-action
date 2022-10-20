@@ -14,5 +14,5 @@ outputs:
   url:
     description: "The fully qualified deploy preview URL"
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"
