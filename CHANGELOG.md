@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/kamranayub/wait-for-netlify-action/compare/v2.0.3...v2.1.0) (2022-10-21)
+
+
+### Features
+
+* query *all* sites and match on exact site name ([#7](https://github.com/kamranayub/wait-for-netlify-action/issues/7)) ([40462bd](https://github.com/kamranayub/wait-for-netlify-action/commit/40462bd43a592d2926663e1e539f3751f768a1d9))
+
 ## [2.0.3](https://github.com/kamranayub/wait-for-netlify-action/compare/v2.0.2...v2.0.3) (2020-07-31)
 
 
