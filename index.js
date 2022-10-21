@@ -16,6 +16,7 @@ const waitForUrl = async (url, MAX_TIMEOUT) => {
   for (let i = 0; i < iterations; i += 1) {
     try {
       await axios.get(url);
+      console.log('Url fetch completed, done!');
       return;
     } catch (e) {
       console.log('Url unavailable, retrying...');
@@ -49,11 +50,13 @@ const run = async () => {
       core.setFailed('Required field `site_name` was not provided');
     }
 
-    const { data: netlifySites } = await getNetlifyUrl(`https://api.netlify.com/api/v1/sites?name=${siteName}`);
+    const { data: netlifySites } = await getNetlifyUrl(
+      `https://api.netlify.com/api/v1/sites?filter=all&name=${siteName}`,
+    );
     if (!netlifySites || netlifySites.length === 0) {
       core.setFailed(`Could not find Netlify site with the name ${siteName}`);
     }
-    const { site_id: siteId } = netlifySites[0];
+    const { site_id: siteId } = netlifySites.find((site) => site.name === siteName);
     core.setOutput('site_id', siteId);
 
     const { data: netlifyDeployments } = await getNetlifyUrl(`https://api.netlify.com/api/v1/sites/${siteId}/deploys`);
